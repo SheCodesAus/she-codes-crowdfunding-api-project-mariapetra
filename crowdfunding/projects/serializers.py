@@ -3,21 +3,25 @@ from .models import Project, Pledge
 
 class PledgeSerializer(serializers.Serializer):
     id = serializers.ReadOnlyField()
+    time = serializers.IntegerField(default=10)
     amount = serializers.IntegerField()
     comment = serializers.CharField(max_length=200)
-    anonymous = serializers.BooleanField()
+    # anonymous = serializers.BooleanField()
     supporter = serializers.CharField(max_length=200)
     project_id = serializers.IntegerField()
     
     def create(self, validated_data):
         return Pledge.objects.create(**validated_data)
+# validator method for pledge - is project open if not no pledges can go in / 
+# is this amount going to take it over the limit and how do you handle that - 
+# will we let it go through - update to set is open to closed once it has gone to 10 hours
 
 
 class ProjectSerializer(serializers.Serializer):
     id = serializers.ReadOnlyField()
     title = serializers.CharField(max_length=200)
     description = serializers.CharField(max_length=200)
-    goal = serializers.IntegerField()
+    time = serializers.IntegerField()
     image = serializers.URLField()
     is_open = serializers.BooleanField()
     date_created = serializers.DateTimeField()
