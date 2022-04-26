@@ -19,7 +19,6 @@ class Project(models.Model):
 
 class Pledge(models.Model):
     amount = models.IntegerField()
-    time = models.IntegerField(default=10)
     comment = models.CharField(max_length=200)
     # anonymous = models.BooleanField()
     project = models.ForeignKey(
