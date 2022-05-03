@@ -3,7 +3,7 @@ from .models import Project, Pledge
 
 class PledgeSerializer(serializers.Serializer):
     id = serializers.ReadOnlyField()
-    time = serializers.IntegerField(default=10)
+    # time = serializers.IntegerField(default=10)
     amount = serializers.IntegerField()
     comment = serializers.CharField(max_length=200)
     # anonymous = serializers.BooleanField()
