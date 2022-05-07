@@ -16,7 +16,7 @@ class PledgeList(APIView):
         serializer = PledgeSerializer(data=request.data)
         if serializer.is_valid():
             # look up project - update total / check what otal is - if total >=10 set project to closed
-            serializer.save()
+            serializer.save(supporter=request.user)
             return Response(
                 serializer.data,
                 status=status.HTTP_201_CREATED
