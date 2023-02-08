@@ -63,7 +63,7 @@ class PledgeDetail(APIView):
         pledge = self.get_object(pk)
         pledge.delete()
         return Response(status=status.HTTP_204_NO_CONTENT)
-
+# get projects
 class ProjectList(APIView):
     permission_classes = [
         permissions.IsAuthenticatedOrReadOnly, 
